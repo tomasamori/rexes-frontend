@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.sign-in-input {
+    width: 80%;
+}
+
+.error-container {
+    margin-bottom: 15px;
+}
+
+.btn-container {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-container button {
+    width: 70%;
+}
