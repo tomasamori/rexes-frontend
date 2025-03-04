@@ -8,9 +8,10 @@ export class AuthenticationService {
   constructor(private readonly http: HttpClient) {}
 
   apiUrl = 'http://localhost:3000/api/v1/authentication';
+  userRole: string | null = null;
 
   signIn(email: string, password: string) {
-    return this.http.post<{ token: string }>(this.apiUrl + '/signin', {
+    return this.http.post<{ token: string, role: string }>(this.apiUrl + '/signin', {
       email,
       password,
     });
@@ -18,6 +19,10 @@ export class AuthenticationService {
 
   isAuthenticated() {
     return !!localStorage.getItem('authToken');
+  }
+
+  isAdmin() {
+    return this.userRole === 'admin';
   }
 
   signOut() {

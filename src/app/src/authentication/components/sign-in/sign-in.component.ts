@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -72,6 +72,7 @@ export class SignInComponent {
     result.subscribe({
       next: (data) => {
         localStorage.setItem('authToken', data.token);
+        this.authenticationService.userRole = data.role;
         this.router.navigate(['/']);
       },
       error: (error) => {

@@ -1,5 +1,9 @@
 <mat-toolbar>
-    <a routerLink="/">Rexes</a> <!-- Add logo and styles -->
+    <a class="nav-item" routerLink="/"><img src="logo.png" alt="Rexes Logo"></a>
+    <div class="navigation-container">
+        <a *ngIf="isAdmin()" class="nav-item" routerLink="/users">Users</a>
+        <a class="nav-item" routerLink="/operations">Operations</a>
+    </div>
     <span class="spacer"></span>
     <button mat-stroked-button (click)="signOut()">Sign out</button>
 </mat-toolbar>

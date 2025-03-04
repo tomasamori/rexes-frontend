@@ -1,3 +1,26 @@
 .spacer {
     flex: 1 1 auto;
 }
+
+.nav-item img {
+    max-width: 120px;
+    margin-top: 10px;
+    margin-right: 12px;
+}
+
+.nav-item {
+    color: rgba(0, 0, 0, 0.671);
+    text-decoration: none;
+    font-size: large;
+    margin-right: 12px;
+}
+
+.nav-item:hover {
+    color: black;
+}
+
+.navigation-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
