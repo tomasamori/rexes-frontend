@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="form-container">
+    <form [formGroup]="operationForm" class="operation-form">
+      <h2 mat-dialog-title class="operation-form-title">{{ data.title }}</h2>
+      <mat-dialog-content>
+        <mat-form-field appearance="outline" class="operation-form-input">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value="expense">Expense</mat-option>
+            <mat-option value="income">Income</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="operation-form-input">
+          <mat-label>Amount</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            type="number"
+            formControlName="amount"
+            min="0"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="operation-form-input">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            type="text"
+            formControlName="description"
+          />
+        </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button
+          [disabled]="!operationForm.valid"
+          mat-button
+          [mat-dialog-close]="true"
+          (click)="onSubmit()"
+        >
+          Save
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="demo-button-container">
+    <button
+      mat-raised-button
+      class="demo-button"
+      (click)="openOperationFormDialog()"
+    >
+      New Operation
+    </button>
+  </div>
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 demo-table"
+  >
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="operationTimestamp">
+      <th mat-header-cell *matHeaderCellDef>Timestamp</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.operationTimestamp | date : "dd/MM/yyyy HH:mm:ss" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Amount</th>
+      <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+
+    <ng-container *ngIf="isAdmin()" matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="openOperationFormDialog(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="openDeleteDialog(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td></ng-container
+    >
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

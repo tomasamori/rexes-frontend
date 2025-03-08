@@ -71,8 +71,10 @@ export class SignInComponent {
 
     result.subscribe({
       next: (data) => {
+        const expirationTime = new Date().getTime() + 60 * 60 * 1000;
         localStorage.setItem('authToken', data.token);
-        this.authenticationService.userRole = data.role;
+        localStorage.setItem('role', data.role);
+        localStorage.setItem('expirationTime', expirationTime.toString());
         this.router.navigate(['/']);
       },
       error: (error) => {

@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { ToolbarComponent } from './src/navigation/components/toolbar/toolbar.component';
+import { ToolbarComponent } from './src/common/navigation/components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-root',

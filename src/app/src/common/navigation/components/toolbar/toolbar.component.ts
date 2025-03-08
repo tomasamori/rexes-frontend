@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink } from '@angular/router';
-import { AuthenticationService } from '../../../authentication/services/authentication.service';
+import { AuthenticationService } from '../../../../authentication/services/authentication.service';
 import { NgIf } from '@angular/common';
 
 @Component({

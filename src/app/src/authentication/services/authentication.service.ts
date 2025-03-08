@@ -8,24 +8,40 @@ export class AuthenticationService {
   constructor(private readonly http: HttpClient) {}
 
   apiUrl = 'http://localhost:3000/api/v1/authentication';
-  userRole: string | null = null;
 
   signIn(email: string, password: string) {
-    return this.http.post<{ token: string, role: string }>(this.apiUrl + '/signin', {
-      email,
-      password,
-    });
+    return this.http.post<{ token: string; role: string }>(
+      this.apiUrl + '/signin',
+      {
+        email,
+        password,
+      }
+    );
   }
 
   isAuthenticated() {
-    return !!localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken');
+    const expiration = localStorage.getItem('expirationTime');
+
+    if (!token || !expiration) {
+      return false;
+    }
+
+    const currentTime = new Date().getTime();
+    if (currentTime > Number(expiration)) {
+      this.signOut(); // Cerrar sesión automáticamente si expiró
+      return false;
+    }
+
+    return true;
   }
 
   isAdmin() {
-    return this.userRole === 'admin';
+    return localStorage.getItem('role') === 'admin';
   }
 
   signOut() {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('role');
   }
 }
