@@ -1,0 +1,25 @@
+.container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .general-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding-bottom: 5%;
+  }
+  
+  .new-user-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 16px;
+  }
+  

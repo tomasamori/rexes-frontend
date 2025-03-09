@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.form-container {
+    text-align: center;
+}
+
+.user-form-title {
+    margin-bottom: 20px;
+}
+
+.user-form-input {
+    width: 90%;
+    padding-top: 5px;
+}
