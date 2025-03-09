@@ -11,6 +11,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
+  MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -44,6 +45,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class OperationFormDialogComponent implements OnInit {
   private readonly operationService = inject(OperationService);
   private readonly snackBar = inject(MatSnackBar);
+  private readonly dialogRef = inject(
+    MatDialogRef<OperationFormDialogComponent>
+  );
   data = inject(MAT_DIALOG_DATA);
 
   ngOnInit(): void {
@@ -79,6 +83,7 @@ export class OperationFormDialogComponent implements OnInit {
         this.snackBar.open('Operation updated successfully', 'Close', {
           duration: 5000,
         });
+        this.dialogRef.close(true);
       });
     } else {
       let operationCopy = {
@@ -87,7 +92,12 @@ export class OperationFormDialogComponent implements OnInit {
         amount: Number(this.operationForm.value.amount),
         description: this.operationForm.value.description!,
       };
-      this.operationService.createOperation(operationCopy).subscribe(() => {});
+      this.operationService.createOperation(operationCopy).subscribe(() => {
+        this.snackBar.open('Operation created successfully', 'Close', {
+          duration: 5000,
+        });
+        this.dialogRef.close(true);
+      });
     }
   }
 }
